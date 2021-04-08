@@ -1,5 +1,8 @@
 from django.http import HttpResponse
+import requests
 
 
 def index(request):
-    return HttpResponse("Now u can start")
+    r = requests.get('http://httpbin.org/status/418')
+    print(r.text)
+    return HttpResponse('<pre>' + r.text + '</pre>')
